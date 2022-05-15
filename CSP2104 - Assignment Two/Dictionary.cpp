@@ -103,3 +103,41 @@ void dict::Dictionary::taskThree() {
 		std::cout << "[ERROR] No words were found. Something went wrong!\n";
 	}
 }
+
+void dict::ExtendedDictionary::taskFour() {
+	std::vector<word::Word>* dictionary = this->getList();
+	std::vector<word::Word*> palindromes;
+
+	for (int i = 0; i < dictionary->size(); i++) {
+		word::Word* curWord = &dictionary->at(i);
+		int wordSize = curWord->getName().size();
+		bool pdrome = true;
+		for (int j = 0; j < wordSize; j++) {
+			int opposite = wordSize - j - 1;
+			pdrome = (pdrome && (curWord->getName().at(j) == curWord->getName().at(opposite)));
+		}
+		if (pdrome) palindromes.push_back(curWord);
+	}
+
+	if (!palindromes.empty()) {
+		std::cout << "-----======= Word List =======-----\n";
+		for (int i = 0; i < palindromes.size(); i++) std::cout << palindromes.at(i)->getName() << "\n";
+		std::cout << "-----=========================-----\n";
+		std::cout << "[T4] There are " << palindromes.size() << " words that are palindromes in the dictionary!\n";
+	}
+	else {
+		std::cout << "[ERROR] No palindromes were found. Something went wrong!\n";
+	}
+}
+
+void dict::ExtendedDictionary::taskFive() {
+	return;
+}
+
+void dict::ExtendedDictionary::taskSix() {
+	return;
+}
+
+void dict::ExtendedDictionary::taskSeven() {
+	return;
+}

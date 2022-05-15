@@ -20,4 +20,12 @@ namespace dict {
 		void taskTwo();
 		void taskThree();
 	};
+
+	class ExtendedDictionary : public Dictionary {
+	public:
+		void taskFour();
+		void taskFive();
+		void taskSix();
+		void taskSeven();
+	};
 }

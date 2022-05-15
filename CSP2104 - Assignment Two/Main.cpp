@@ -11,10 +11,14 @@ void displayTasks() {
 	std::cout << "[TASK] 1: Word search - Is a word in the dictionary?\n";
 	std::cout << "[TASK] 2: Find words - Find all words containing a specified character n times.\n";
 	std::cout << "[TASK] 3: List some words - List all words containing a \"q\" without a following \"u\".\n";
+	std::cout << "[TASK] 4: Palindrome - Returns all words that are palindromes.\n";
+	std::cout << "[TASK] 5: Anagrams - Returns all the words that are anagrams of a specified word.\n";
+	std::cout << "[TASK] 6: Guessing Game - Presents the definition of a random noun, user has three tries to guess the noun.\n";
+	std::cout << "[TASK] 7: Cheat at Wordle - User can specify the grey letters, yellow and green letters as displayed in Wordle. Program will recommend words to try.\n";
 }
 
 int main() {
-	dict::Dictionary dict;
+	dict::ExtendedDictionary dict;
 	dict.loadDictionary(DICTIONARY);
 
 	while (true) {
@@ -31,6 +35,18 @@ int main() {
 			break;
 		case 3:
 			dict.taskThree();
+			break;
+		case 4:
+			dict.taskFour();
+			break;
+		case 5:
+			dict.taskFive();
+			break;
+		case 6:
+			dict.taskSix();
+			break;
+		case 7:
+			dict.taskSeven();
 			break;
 		default:
 			std::cout << "[TASK] Invalid task entered \"" << selectedTask << "\". Please try again.\n";
