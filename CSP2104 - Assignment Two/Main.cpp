@@ -6,15 +6,21 @@
 
 #define DICTIONARY "dictionary2022_S1.txt"
 
-using namespace dict;
+void displayTasks() {
+	std::cout << "[TASK] Please see a list of tasks detailed below. Enter a number, and the task will start.\n";
+	std::cout << "[TASK] 1: Word search - Is a word in the dictionary?\n";
+	std::cout << "[TASK] 2: Find words - Find all words containing a specified character n times.\n";
+	std::cout << "[TASK] 3: List some words - List all words containing a \"q\" without a following \"u\".\n";
+}
 
 int main() {
-	Dictionary dict;
+	dict::Dictionary dict;
 	dict.loadDictionary(DICTIONARY);
 
 	while (true) {
-		// TODO: Task Banner
-		std::string selectedTask = utils::getInput<std::string>("Which task? ");
+		std::cout << "\n";
+		displayTasks();
+		std::string selectedTask = utils::getInput<std::string>("[TASK] Which task? ");
 
 		switch (atoi(selectedTask.c_str())) {
 		case 1:

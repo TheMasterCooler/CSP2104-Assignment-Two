@@ -41,7 +41,9 @@ word::Word::Word(std::string wordName, std::string wordType, std::string wordDef
 }
 
 void word::Word::printDefinition() {
-	std::cout << "egg\n";
+	std::cout << "-----======= Word Info =======-----\n";
+	std::cout << this->getName() << " | " << this->getPrettyType() << " | " << this->getDefinition() << "\n";
+	std::cout << "-----=========================-----\n";
 }
 
 std::string word::Word::getName() { return this->name; }
