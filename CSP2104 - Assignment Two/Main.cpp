@@ -9,7 +9,8 @@
 using namespace dict;
 
 void main() {
-	utils::print("hello");
+	std::cout << "Loaded program\n";
+
 	Dictionary dict;
 	dict.loadDictionary(DICTIONARY);
 
