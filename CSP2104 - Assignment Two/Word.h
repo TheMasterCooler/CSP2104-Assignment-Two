@@ -2,6 +2,9 @@
 
 #include <iostream>
 #include <unordered_map>
+#include <stdlib.h>
+
+#include "Utils.h"
 
 namespace word {
 	class Word {
@@ -9,10 +12,10 @@ namespace word {
 		std::string name;
 		std::string type;
 		std::string definition;
-		std::string prettyType; // Set this automatically in the constructor
+		std::string prettyType;
 		int length;
+		bool fiveLetters;
 	public:
-		// Don't need any setters seeing as everything can be done in constructor
 		std::string getName();
 		std::string getType();
 		std::string getDefinition();
@@ -20,6 +23,11 @@ namespace word {
 		int getLength();
 		
 		void printDefinition();
+
+		bool wordleHasYellowLetters(std::vector<std::string>);
+		bool wordleExcludesGreyLetters(std::vector<std::string>);
+		bool wordleHasGreenLetters(std::vector<std::string>);
+		bool wordleIsFiveLetters();
 
 		Word(std::string, std::string, std::string);
 	};

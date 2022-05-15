@@ -6,6 +6,9 @@
 #include <vector>
 #include <algorithm>
 
+#define WORD_MAP_LENGTH 256 // Length of arrays to use for word maps. This works as ASCII only goes to 256
+							// if you can overflow it I deserve the reduced mark. 
+
 namespace utils {
 	std::vector<std::string> stringExplode(std::string content, std::string delimeter);
 	std::string readFile(const char* filePath);

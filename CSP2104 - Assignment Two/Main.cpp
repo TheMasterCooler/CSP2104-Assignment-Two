@@ -6,6 +6,16 @@
 
 #define DICTIONARY "dictionary2022_S1.txt"
 
+/*
+* Display the task banner informing the user of their available options.
+* 
+* Param(s):
+*	N/A
+* Return:
+*	N/A
+* Author:
+*	Ben Armstrong (10547876) - 15/05/2022
+*/
 void displayTasks() {
 	std::cout << "[TASK] Please see a list of tasks detailed below. Enter a number, and the task will start.\n";
 	std::cout << "[TASK] 1: Word search - Is a word in the dictionary?\n";
@@ -17,15 +27,30 @@ void displayTasks() {
 	std::cout << "[TASK] 7: Cheat at Wordle - User can specify the grey letters, yellow and green letters as displayed in Wordle. Program will recommend words to try.\n";
 }
 
+/*
+* Main entry point of the program.
+*
+* Param(s):
+*	N/A
+* Return:
+*	N/A
+* Author:
+*	Ben Armstrong (10547876) - 23/04/2022
+*/
 int main() {
+	// Define the dictionary, and load the dictionary file as defined and mounted
 	dict::ExtendedDictionary dict;
 	dict.loadDictionary(DICTIONARY);
 
 	while (true) {
+		// Place a newline to space things out
 		std::cout << "\n";
 		displayTasks();
+		// Prompt the user to enter a task
 		std::string selectedTask = utils::getInput<std::string>("[TASK] Which task? ");
 
+		// Switch statement, selects which task to perform and will prompt
+		// if an invalid entry is received.
 		switch (atoi(selectedTask.c_str())) {
 		case 1:
 			dict.taskOne();
