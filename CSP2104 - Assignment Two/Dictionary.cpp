@@ -25,3 +25,18 @@ bool dict::Dictionary::loadDictionary(std::string filename) {
 
 	return true;
 }
+
+void dict::Dictionary::taskOne() {
+	std::cout << "[TASK] You chose task #1.\n";
+	return;
+}
+
+void dict::Dictionary::taskTwo() {
+	std::cout << "[TASK] You chose task #2.\n";
+	return;
+}
+
+void dict::Dictionary::taskThree() {
+	std::cout << "[TASK] You chose task #3.\n";
+	return;
+}

@@ -15,5 +15,9 @@ namespace dict {
 
 		void pushWord(word::Word); // Pushes a word to the wordlist
 		bool loadDictionary(std::string); // Returns boolean if the dictionary is loaded
+
+		void taskOne();
+		void taskTwo();
+		void taskThree();
 	};
 }
