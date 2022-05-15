@@ -112,7 +112,7 @@ void dict::ExtendedDictionary::taskFour() {
 		word::Word* curWord = &dictionary->at(i);
 		int wordSize = curWord->getName().size();
 		bool pdrome = true;
-		for (int j = 0; j < wordSize; j++) {
+		for (int j = 0; j < (ceil((double)wordSize / 2.0f)); j++) {
 			int opposite = wordSize - j - 1;
 			pdrome = (pdrome && (curWord->getName().at(j) == curWord->getName().at(opposite)));
 		}
@@ -131,6 +131,41 @@ void dict::ExtendedDictionary::taskFour() {
 }
 
 void dict::ExtendedDictionary::taskFive() {
+	std::string userWord = utils::toLower(utils::getInput<std::string>("[T5] Please enter a word: ")); // Maybe check for "" idk
+
+	std::vector<word::Word>* dictionary = this->getList();
+	std::vector<word::Word*> anagrams;
+
+	int userCount[ANAGRAM_LENGTH] = { 0 };
+	for (int i = 0; i < userWord.size(); i++) userCount[userWord.at(i)]++;
+
+	for (int i = 0; i < dictionary->size(); i++) {
+		word::Word* curWord = &dictionary->at(i);
+		if ((curWord->getLength() == userWord.size()) && (curWord->getName() != userWord)) {
+			bool anagram = true;
+
+			int curCount[ANAGRAM_LENGTH] = { 0 };
+			for (int j = 0; j < curWord->getLength(); j++) curCount[curWord->getName().at(j)]++;
+			for (int j = 0; j < ANAGRAM_LENGTH; j++) {
+				anagram = (anagram && (userCount[j] == curCount[j]));
+			}
+
+			if (anagram) {
+				anagrams.push_back(curWord);
+			}
+		}
+	}
+
+	if (!anagrams.empty()) {
+		std::cout << "-----======= Word List =======-----\n";
+		for (int i = 0; i < anagrams.size(); i++) std::cout << anagrams.at(i)->getName() << "\n";
+		std::cout << "-----=========================-----\n";
+		std::cout << "[T5] There are " << anagrams.size() << " anagrams of that word in the dictionary.\n";
+	}
+	else {
+		std::cout << "[ERROR] No anagrams were found.\n";
+	}
+
 	return;
 }
 

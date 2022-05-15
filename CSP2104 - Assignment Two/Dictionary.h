@@ -6,6 +6,8 @@
 #include "Utils.h"
 #include "Word.h"
 
+#define ANAGRAM_LENGTH 256 // The length of the array used for anagrams. This is plenty as the highest ASCII code is 255.
+
 namespace dict {
 	class Dictionary {
 	private:

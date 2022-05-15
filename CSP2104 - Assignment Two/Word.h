@@ -10,12 +10,14 @@ namespace word {
 		std::string type;
 		std::string definition;
 		std::string prettyType; // Set this automatically in the constructor
+		int length;
 	public:
 		// Don't need any setters seeing as everything can be done in constructor
 		std::string getName();
 		std::string getType();
 		std::string getDefinition();
 		std::string getPrettyType();
+		int getLength();
 		
 		void printDefinition();
 
