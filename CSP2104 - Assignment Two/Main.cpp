@@ -4,7 +4,10 @@
 
 #include <iostream>
 
-#define DICTIONARY "dictionary2022_S1.txt"
+#define DICTIONARY "dictionary2022_S1.txt" // The dictionary file name, shouldn't change as it is a resource.
+
+// Sidenote: I completely forgot this was due until the email was sent through, and was busy with other assignments.
+// this entire thing was written from ~3pm 15th to 5am on the 16th. Time management am I right.
 
 /*
 * Display the task banner informing the user of their available options.

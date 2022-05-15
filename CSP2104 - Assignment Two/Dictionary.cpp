@@ -382,7 +382,7 @@ void dict::ExtendedDictionary::taskSeven() {
 	std::cout << "\n";
 	std::cout << "[T7] Welcome to Cheat at Wordle! This application is designed to suggest words to use during the Wordle.\n";
 	std::cout << "[T7] Wordle is a word-based guessing game, you are presented with a 5x6 square and are challenged to guess five letter words.\n";
-	std::cout << "[T7] To aide, you are provided hints as you go along. If you enter a character that is NOT present in the correct word, that character will show up as GREY.\n";
+	std::cout << "[T7] To aid, you are provided hints as you go along. If you enter a character that is NOT present in the correct word, that character will show up as GREY.\n";
 	std::cout << "[T7] If you enter a character that IS present in the correct word, just in the incorrect position, the character will show up as YELLOW.\n";
 	std::cout << "[T7] If you enter a character in the CORRECT location, it will show up as green. You have six attempts to guess the word correctly.\n";
 	std::cout << "[T7] To use this application, enter your characters separated by the \"/\" character and with a trailing \"/\" at the end. See below for an example grey and green letter input.\n";
