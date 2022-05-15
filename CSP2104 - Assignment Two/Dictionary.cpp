@@ -17,7 +17,7 @@ bool dict::Dictionary::loadDictionary(std::string filename) {
 	for (int i = 0; i < splitDict.size(); i++) {
 		std::string section = splitDict.at(i);
 		std::vector<std::string> wordData = utils::stringExplode(section, "\n");
-		word::Word word = word::Word(wordData.at(1), wordData.at(0), wordData.at(2));
+		word::Word word = word::Word(utils::toLower(wordData.at(1)), wordData.at(0), wordData.at(2));
 
 		this->pushWord(word);
 	}
@@ -35,24 +35,71 @@ void dict::Dictionary::taskOne() {
 	
 	bool found = false;
 	for (int i = 0; i < dictionary->size(); i++) {
-		word::Word curWord = dictionary->at(i);
+		word::Word* curWord = &dictionary->at(i);
 
-		found = (utils::toLower(curWord.getName()) == choice);
+		found = (curWord->getName() == choice);
 		if (found) {
-			curWord.printDefinition();
+			curWord->printDefinition();
 			break;
 		}
 	}
 
-	if (!found) std::cout << "[T1] Word not found.\n";
+	if (!found) std::cout << "[ERROR] Word not found.\n";
 }
 
 void dict::Dictionary::taskTwo() {
-	std::cout << "[TASK] You chose task #2.\n";
-	return;
+	std::vector<word::Word>* dictionary = this->getList();
+
+	// Using std::tolower not my function because that's designed to work on chars.
+	// In fact my function is a wrapper for std::tolower :)
+	char userChar = std::tolower(utils::getInput<char>("[T2] Please enter a character: "));
+	int userOccur = utils::getInput<int>("[T2] Please enter a number of occurances: ");
+
+	if (userOccur <= 0) {
+		std::cout << "[ERROR] Please enter a positive number.\n";
+		return;
+	}
+
+	std::vector<word::Word*> matchedWords;
+	for (int i = 0; i < dictionary->size(); i++) {
+		word::Word* curWord = &dictionary->at(i);
+		int charCount = 0;
+
+		for (int j = 0; j < curWord->getName().size(); j++) { if (userChar == curWord->getName().at(j)) { charCount++; } }
+		if (charCount >= userOccur) matchedWords.push_back(curWord);
+	}
+
+	if (!matchedWords.empty()) {
+		std::cout << "-----======= Word List =======-----\n";
+		for (int i = 0; i < matchedWords.size(); i++) std::cout << matchedWords.at(i)->getName() << "\n";
+		std::cout << "-----=========================-----\n";
+		std::cout << "[T2] Your character appeared in " << matchedWords.size() << " different words!\n";
+	} else {
+		std::cout << "[ERROR] Your character did not appear in any words " << userOccur << " times or more.\n";
+	}
 }
 
 void dict::Dictionary::taskThree() {
-	std::cout << "[TASK] You chose task #3.\n";
-	return;
+	std::vector<word::Word>* dictionary = this->getList();
+	std::vector<word::Word*> matchedWords;
+
+	for (int i = 0; i < dictionary->size(); i++) {
+		word::Word* curWord = &dictionary->at(i);
+
+		bool lastQ = false;
+		for (int j = 0; j < curWord->getName().size(); j++) {
+			char curChar = curWord->getName().at(j);
+			if ((curChar != *"u" && lastQ) || (curChar == *"q" && j + 1 == curWord->getName().size())) matchedWords.push_back(curWord);
+			lastQ = (curChar == *"q");
+		}
+	}
+
+	if (!matchedWords.empty()) {
+		std::cout << "-----======= Word List =======-----\n";
+		for (int i = 0; i < matchedWords.size(); i++) std::cout << matchedWords.at(i)->getName() << "\n";
+		std::cout << "-----=========================-----\n";
+	}
+	else {
+		std::cout << "[ERROR] No words were found. Something went wrong!\n";
+	}
 }
