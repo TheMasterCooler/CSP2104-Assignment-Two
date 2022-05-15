@@ -2,6 +2,8 @@
 
 #include <iostream>
 #include <vector>
+#include <stdlib.h>
+#include <ctime>
 
 #include "Utils.h"
 #include "Word.h"

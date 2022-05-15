@@ -170,6 +170,50 @@ void dict::ExtendedDictionary::taskFive() {
 }
 
 void dict::ExtendedDictionary::taskSix() {
+	srand(time(NULL));
+
+	std::vector<word::Word>* dictionary = this->getList();
+	
+	std::vector<word::Word*> nouns;
+	
+	for (int i = 0; i < dictionary->size(); i++) {
+		word::Word* curWord = &dictionary->at(i);
+		if (curWord->getType() == "n") nouns.push_back(curWord);
+	}
+
+	int randomIndex = rand() % nouns.size();
+	word::Word* randomWord = nouns.at(randomIndex);
+
+	std::cout << "[T6] Please see below for a definition of a random noun.\n";
+	std::cout << randomWord->getDefinition() << "\n";
+	std::cout << "[T6] The noun is " << randomWord->getLength() << " characters long.\n";
+	
+	int guessCount = 0;
+
+	while (guessCount < 3) {
+		std::string guess = utils::getInput<std::string>("[T6] Please enter a guess: ");
+		guessCount++;
+		if (guess == randomWord->getName()) {
+			std::cout << "[T6] Congratulations! You guessed the word correctly.\n";
+			break;
+		} else {
+			switch (guessCount) {
+			case 1:
+				std::cout << "[T6] Incorrect. The first character is: \"" << randomWord->getName().at(0) << "\". Please try again.\n";
+				break;
+			case 2:
+				std::cout << "[T6] Incorrect. The first two characters are: \"" << randomWord->getName().substr(0, 2) << "\". You have one final try.\n";
+				break;
+			case 3:
+				std::cout << "[T6] Incorrect. The word was \"" << randomWord->getName() << "\". Better luck next time!\n";
+				break;
+			default:
+				std::cout << "[T6] Something went wrong. Please try again.\n";
+				break;
+			}
+		}
+	}
+
 	return;
 }
 
