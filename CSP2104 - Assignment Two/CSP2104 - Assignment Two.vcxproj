@@ -149,6 +149,9 @@
     <ClInclude Include="Utils.h" />
     <ClInclude Include="Word.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="dictionary2022_S1.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -46,4 +46,5 @@ void word::Word::printDefinition() {
 
 std::string word::Word::getName() { return this->name; }
 std::string word::Word::getType() { return this->type; }
+std::string word::Word::getDefinition() { return this->definition; }
 std::string word::Word::getPrettyType() { return this->prettyType; }

@@ -1,5 +1,11 @@
-// Used to contain utility functions that may be used in multiple locations
+#pragma once
+
+#include <iostream>
+#include <fstream>
+#include <sstream>
 
 namespace utils {
+	void print(std::string message); 
 
+	std::string readFile(const char* filePath);
 }
